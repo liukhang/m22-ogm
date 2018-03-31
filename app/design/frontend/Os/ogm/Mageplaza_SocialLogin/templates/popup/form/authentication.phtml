@@ -1,0 +1,73 @@
+<?php
+/**
+ * Mageplaza
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Mageplaza.com license that is
+ * available through the world-wide-web at this URL:
+ * https://www.mageplaza.com/LICENSE.txt
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ * @category    Mageplaza
+ * @package     Mageplaza_SocialLogin
+ * @copyright   Copyright (c) 2016 Mageplaza (http://www.mageplaza.com/)
+ * @license     https://www.mageplaza.com/LICENSE.txt
+ */
+?>
+<div class="social-login block-container authentication">
+<?php /*
+    <div class="social-login-title">
+        <h2 class="login-title">
+            <?php echo __('Sign In') ?>
+        </h2>
+    </div>
+*/ ?>
+    <div class="block social-login-customer-authentication col-mp" id="social-login-authentication">
+        <div class="block-title">
+            <h3 id="block-customer-login-heading" role="heading" aria-level="2"><?php echo __('Hai già un account?') ?></h3>
+            <span title="Close (Esc)" type="button" class="mfp-close custom">×</span>
+        </div>
+        <div class="block-content" aria-labelledby="block-customer-login-heading">
+            <form class="form-customer-login" id="social-form-login" data-mage-init='{"validation":{}}'>
+                <?php echo $block->getBlockHtml('formkey'); ?>
+                <fieldset class="fieldset login" data-hasrequired="<?php 
+                echo __('* Required Fields') ?>">
+                    <div class="field email required">
+                        <?php /*<label class="label" for="email"><span><?php echo __('Email') ?></span></label>*/ ?>
+                        <div class="control">
+                            <input placeholder="<?php echo __("Inserisci l'e-mail") ?>" name="username" id="email" type="email" class="input-text"
+                                   value="<?php echo $block->escapeHtml($block->getUsername()) ?>"<?php if ($block->isAutocompleteDisabled()): ?> autocomplete="off"<?php endif; ?>
+                                   title="<?php echo __('Email') ?>" data-validate="{required:true, 'validate-email':true}">
+                        </div>
+                    </div>
+                    <div class="field password required">
+                        <?php /*<label for="pass" class="label"><span><?php echo __('Password') ?></span></label>*/ ?>
+                        <div class="control">
+                            <input placeholder="<?php echo __("Inserisci la password") ?>" name="password" id="pass" type="password" class="input-text"<?php if ($block->isAutocompleteDisabled()): ?> autocomplete="off"<?php endif; ?>
+                                   title="<?php echo __('Password') ?>" data-validate="{required:true, 'validate-password':true}">
+                        </div>
+                    </div>
+                    <?php echo $block->getChildHtml('form_additional_info'); ?>
+                    <?php echo $block->getChildHtml('login.captcha') ?>
+                    <div class="actions-toolbar">
+                        <div class="secondary forgot-pass"><a class="action remind" href="#"><span><?php echo __('Hai dimenticato la password?') ?></span></a></div>
+                        <div class="custom-button-login">
+                            <button type="button" class="action login primary" id="bnt-social-login-authentication"><span><?php echo __('Accedi') ?></span></button>
+                        </div>
+                        <?php echo $block->getChildHtml('popup.authentication.social') ?>
+                    </div>
+                    <span class="oppure"><?php echo __('Non hai un acconunt?') ?></span>
+                    <div class="non-registrato actions-toolbar">
+                        <a href="javascript:void(0)" class="action create button"><?php echo __('Registrati') ?></a>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+</div>
+

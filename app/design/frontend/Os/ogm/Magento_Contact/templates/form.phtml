@@ -1,0 +1,105 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+/** @var \Magento\Contact\Block\ContactForm $block */
+?>
+<div class="contact-wrapper">
+    <div class="page-title">
+        <h1><?php echo __('CONTATTI') ?></h1>
+    </div>
+    <div class="contact-content-custom">
+        <div class="col-md-4 col-xs-12 contact-info">
+            <ul>
+                <li><strong><?php echo __('EM Industries') ?></strong></li>
+                <li><?php echo __('Via Mantova 28C') ?></li>
+                <li><?php echo __('37069 Villafranca di Verona (VR)') ?></li>
+                <li><?php echo __('P.IVA: 04496030232') ?></li>
+                <li>
+                    <a target="_blank" href="https://www.facebook.com/OGM-plant-320840181696716/" class="social-text">facebook</a>
+                    <a target="_blank" href="https://www.instagram.com/ogm_plant/" class="social-text">instagram</a>
+                </li>
+            </ul>       
+        </div>
+        <div class="col-md-8 col-xs-12">
+            <form class="form contact"
+                  action="<?= $block->escapeUrl($block->getFormAction()) ?>"
+                  id="contact-form"
+                  method="post"
+                  data-hasrequired="<?= $block->escapeHtmlAttr(__('* Required Fields')) ?>"
+                  data-mage-init='{"validation":{}}'>
+                <fieldset class="fieldset">
+                    <?php /*
+                    <legend class="legend"><span><?= $block->escapeHtml(__('Write Us')) ?></span></legend><br />
+                    <div class="field note no-label"><?= $block->escapeHtml(__('Jot us a note and we’ll get back to you as quickly as possible.')) ?></div>
+                    */ ?>
+                   <div class="form-list col-md-6 col-xs-12">
+                    <div class="field name required">
+                        <?php /*<label class="label" for="name"><span><?= $block->escapeHtml(__('Name')) ?></span></label>*/ ?>
+                        <div class="control">
+                            <input placeholder="<?php echo __('Nome*') ?>" name="name" id="name" title="<?= $block->escapeHtmlAttr(__('Name')) ?>" value="<?= $block->escapeHtmlAttr($this->helper('Magento\Contact\Helper\Data')->getPostValue('name') ?: $this->helper('Magento\Contact\Helper\Data')->getUserName()) ?>" class="input-text" type="text" data-validate="{required:true}"/>
+                        </div>
+                    </div>
+                    <div class="field cognome required">
+                        <?php /*<label class="label" for="cognome"><span><?= $block->escapeHtml(__('Cognome')) ?></span></label>*/ ?>
+                        <div class="control">
+                            <input placeholder="<?php echo __('Cognome*') ?>" name="cognome" id="cognome" title="<?= $block->escapeHtmlAttr(__('Cognome')) ?>" value="<?= $block->escapeHtmlAttr($this->helper('Magento\Contact\Helper\Data')->getPostValue('cognome') ?: $this->helper('Magento\Contact\Helper\Data')->getUserName()) ?>" class="input-text" type="text" data-validate="{required:true}"/>
+                        </div>
+                    </div>
+                    <div class="field email required">
+                        <?php /*<label class="label" for="email"><span><?= $block->escapeHtml(__('Email')) ?></span></label>*/ ?>
+                        <div class="control">
+                            <input placeholder="<?php echo __('Email*') ?>" name="email" id="email" title="<?= $block->escapeHtmlAttr(__('Email')) ?>" value="<?= $block->escapeHtmlAttr($this->helper('Magento\Contact\Helper\Data')->getPostValue('email') ?: $this->helper('Magento\Contact\Helper\Data')->getUserEmail()) ?>" class="input-text" type="email" data-validate="{required:true, 'validate-email':true}"/>
+                        </div>
+                    </div>
+                    <div class="field telephone">
+                        <?php /*<label class="label" for="telephone"><span><?= $block->escapeHtml(__('Phone Number')) ?></span></label>*/ ?>
+                        <div class="control">
+                            <input placeholder="<?php echo __('Telefono*') ?>" name="telephone" id="telephone" title="<?= $block->escapeHtmlAttr(__('Phone Number')) ?>" value="<?= $block->escapeHtmlAttr($this->helper('Magento\Contact\Helper\Data')->getPostValue('telephone')) ?>" class="input-text" type="text" />
+                        </div>
+                    </div>
+                </div>
+                <div class="form-list col-md-6 col-xs-12">
+                    <div class="field comment required">
+                        <?php /*<label class="label" for="comment"><span><?= $block->escapeHtml(__('What’s on your mind?')) ?></span></label>*/ ?>
+                        <div class="control">
+                            <textarea placeholder="<?php echo __('Messaggio*') ?>" name="comment" id="comment" title="<?= $block->escapeHtmlAttr(__('What’s on your mind?')) ?>" class="input-text" cols="5" rows="3" data-validate="{required:true}"><?= $block->escapeHtml($this->helper('Magento\Contact\Helper\Data')->getPostValue('comment')) ?></textarea>
+                        </div>
+                    </div>
+                   </div> 
+                    <?= $block->getChildHtml('form.additional.info') ?>
+                </fieldset>
+
+
+                <div class="buttons-set">
+                    <p class="required"><?php echo __('* Campi obbligatori') ?></p>
+                    <div class="checkbox-left check_same">
+                        <input type="checkbox" value="on" name="Privacy" title="Privacy Policy" id="inputPrivacy" class="checkbox required-entry checkbox-newsletter">
+                        <label for="privacy" class="lable-privacy"><?php echo __("Ho letto e accetto l’") ?><a href="/privacy-policy-cookie-restriction-mode/" target="_blank"><?php echo __("informativa sulla privacy policy") ?></a></label>
+                    </div>
+                    <div class="checkbox-left check_same">
+                        <input type="checkbox" value="on" name="Privacy" title="Privacy Policy" id="inputPrivacy" class="checkbox checkbox-newsletter">
+                        <label for="privacy" class="lable-privacy"><?php echo __("Acconsento al trattamento di cui al punto 3 lettera f dell’") ?><a href="/privacy-policy-cookie-restriction-mode/" target="_blank"><?php echo __('informativa sulla privacy policy') ?></a>
+                        </label>
+                    </div>
+                    <div class="actions-toolbar">
+                        <div class="primary">
+                            <input type="hidden" name="hideit" id="hideit" value="" />
+                            <button type="submit" title="<?= $block->escapeHtmlAttr(__('Submit')) ?>" class="action submit primary">
+                                <span><?= $block->escapeHtml(__('Invia')) ?></span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+    </div>
+    
+</div>
+<div class="contact-map">
+    <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d5608.445757089915!2d10.838875!3d45.34431300000001!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4781dc2915022d1d%3A0x15421c49c5ef6513!2sVia+Mantova%2C+28C%2C+37069+Villafranca+di+Verona+VR%2C+Italy!5e0!3m2!1sen!2sus!4v1520164722592" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+</div>

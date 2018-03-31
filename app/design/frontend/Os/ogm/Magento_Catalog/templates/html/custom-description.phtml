@@ -1,0 +1,9 @@
+<div class="short-description">
+	<?= /* @escapeNotVerified */ $this->helper('Magento\Catalog\Helper\Output')->productAttribute($block->getProduct(), $block->getProduct()->getShortDescription(), 'short_description') ?>
+</div>
+<div class="description">
+	<div class="title"><?php echo __('MATERIALI E CURA') ?></div>
+	<div class="std">
+		<?= /* @escapeNotVerified */ $this->helper('Magento\Catalog\Helper\Output')->productAttribute($block->getProduct(), $block->getProduct()->getDescription(), 'description') ?>
+	</div>
+</div>

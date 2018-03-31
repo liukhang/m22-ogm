@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<page layout="1column" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="product.info.main">
+            <block class="Magento\Catalog\Block\Product\View" name="custom_prv" before="-" template="Magento_Catalog::html/custom_prv.phtml"/>
+            <block class="Magento\Catalog\Block\Product\View" name="span" after="-" template="Magento_Catalog::html/span.phtml"/>
+            <block class="Magento\Catalog\Block\Product\View" name="custom-description" after="-" template="Magento_Catalog::html/custom-description.phtml"/>
+
+        </referenceContainer>
+        <move element="span" destination="product.info.price" after="-"/>
+        <move element="page.main.title" destination="product.info.main" after="custom_prv"/>
+        <referenceBlock name="product.info.details" remove="true"/>
+        <referenceBlock name="product.info.extrahint" remove="true"/>
+        <referenceBlock name="product.info.stock.sku" remove="true"/>
+     	<referenceBlock name="product.info.review" remove="true"/>
+        <referenceBlock name="product.info.overview" remove="true"/>
+    </body>
+</page>

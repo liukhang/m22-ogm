@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="header.container">
+            <block class="Magento\Framework\View\Element\Template" name="top_header" template="Magento_Theme::html/top-header.phtml" before="-"/>
+        </referenceContainer>
+        <referenceContainer name="header.panel">
+            <block class="Magento\Framework\View\Element\Template" name="custom_store" template="Magento_Theme::html/custom_store.phtml" before="-"/>
+        </referenceContainer>
+        
+        <referenceContainer name="header.links">
+            <block class="Magento\Framework\View\Element\Template" name="custom_key" template="Magento_Theme::html/custom_key.phtml" after="-"/>
+        </referenceContainer>
+        <referenceBlock name="logo">
+            <arguments>
+                <argument name="logo_img_width" xsi:type="number">130</argument>
+                <argument name="logo_img_height" xsi:type="number">50</argument>
+            </arguments>
+        </referenceBlock>
+        <referenceContainer name="footer">
+            <block class="Magento\Store\Block\Switcher" name="store_switcher" as="store_switcher" after="footer_links" template="Magento_Store::switch/stores.phtml"/>
+            
+        </referenceContainer>
+        <referenceContainer name="footer-container">
+            <block class="Magento\Framework\View\Element\Template" name="custom-footer" template="Magento_Theme::html/custom-footer.phtml"/>
+        </referenceContainer>
+        <referenceBlock name="report.bugs" remove="true"/>
+<!-- add custom -->
+        <move element="copyright" destination="before.body.end"/>
+        <referenceBlock name="catalog.compare.sidebar" remove="true"/>
+        <referenceBlock name="footer_links" remove="true"/>
+        <referenceBlock name="store_language" remove="true"/>
+        <referenceBlock name="register-link" remove="true"/>
+        <move element="header.panel.wrapper" destination="header-wrapper" before="-"/>
+        <!-- <move element="breadcrumbs" destination="columns.top" before="-"/> -->
+    </body>
+</page>

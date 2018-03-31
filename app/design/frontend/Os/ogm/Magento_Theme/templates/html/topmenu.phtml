@@ -1,0 +1,62 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+?>
+<?php
+/**
+ * Top menu for store
+ *
+ * @var $block \Magento\Theme\Block\Html\Topmenu
+ */
+?>
+<?php $columnsLimit = $block->getColumnsLimit() ?: 0; ?>
+<?php $_menu = $block->getHtml('level-top', 'submenu', $columnsLimit) ?>
+<?php $actual_link = (isset($_SERVER['HTTPS']) ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]"; ?>
+
+
+	<nav class="navigation" data-action="navigation">
+	    <ul data-mage-init='{"menu":{"responsive":true, "expanded":true, "position":{"my":"left top","at":"left bottom"}}}'>
+		<?php if ($actual_link == 'http://127.0.0.1/m22-ogm/chi-siamo'): ?>
+		
+
+			<ol class="nav nav-primary">
+
+				<li class="level0 nav-1 first">
+
+					<a class="level0" href="#ogm"><?php echo __('OGM'); ?></a>
+
+				</li>
+
+				<li class="level0 nav-2">
+
+					<a class="level0" href="#l-idea"><?php echo __("L’IDEA"); ?></a>
+
+				</li>
+
+				<li class="level0 nav-3">
+
+					<a class="level0" href="#contact-section"><?php echo __('CONTATTI'); ?></a>
+
+				</li>
+
+				<li class="level0 nav-4">
+
+					<a class="level0" href=""><?php echo __('SHOP ONLINE'); ?></a>
+
+				</li>
+
+			</ol>
+
+		<?php else : ?>
+			        <?= /* @escapeNotVerified */ $_menu ?>
+			        <?= /* @escapeNotVerified */ $block->getChildHtml() ?>
+		<?php endif; ?>
+	    </ul>
+	</nav>
+
+
